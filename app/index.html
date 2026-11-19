@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast — Poster Cover Studio</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">NC</span>
+    <div><h1>Neon Coast — Poster Cover Studio</h1>
+    <p>Turn any photos into a GTA-style poster. One tap for a finished poster, or build your own 9-panel cover. Offline — your photos never leave this machine.</p></div>
+  </div>
+  <div class="top-actions">
+    <button id="undo" type="button" title="Undo">↩ Undo</button>
+    <button id="redo" type="button" title="Redo">↪ Redo</button>
+    <button id="shuffle" type="button" title="Shuffle photos and grade">🔀 Shuffle</button>
+  </div>
+</header>
+<main class="app">
+  <section class="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <p id="status" role="status">Pick a layout, tap a panel, load your photos.</p>
+  </section>
+  <aside class="controls">
+    <section class="group">
+      <h2>0 · Poster presets</h2>
+      <div id="presets" class="chips"></div>
+      <p class="hint">One tap = a finished poster: hero photo, grade and lettering included.</p>
+    </section>
+    <section class="group">
+      <h2>1 · Photos</h2>
+      <div id="samples" class="samples"></div>
+      <div class="row">
+        <label class="upload">＋ Add your photos <input id="upload" type="file" accept="image/*" multiple hidden></label>
+        <button id="fillAll" type="button">Fill all panels with one photo</button>
+      </div>
+      <p class="hint">Tap a sample, then tap a panel slot below to place it. Or tap a panel first, then a sample.</p>
+    </section>
+    <section class="group">
+      <h2>2 · Panels <span id="panelLabel" class="tag">Panel 1 of 9</span></h2>
+      <div id="slots" class="slots"></div>
+      <label>Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1"></label>
+      <label>Position X <input id="offX" type="range" min="-0.4" max="0.4" step="0.01" value="0"></label>
+      <label>Position Y <input id="offY" type="range" min="-0.4" max="0.4" step="0.01" value="0"></label>
+    </section>
+    <section class="group">
+      <h2>3 · Layout</h2>
+      <div id="layouts" class="chips"></div>
+    </section>
+    <section class="group">
+      <h2>4 · Colour grade</h2>
+      <div id="grades" class="chips"></div>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+      <label>Poster Ink <input id="ink" type="range" min="0" max="1" step="0.05" value="0.8"></label>
+      <p class="hint">Poster Ink prints halftone dots over the cover, like a printed poster — the signature look of the top covers.</p>
+    </section>
+    <section class="group">
+      <h2>5 · Lettering</h2>
+      <label>Title <input id="title" type="text" maxlength="24" value="SUNSET DUO"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="32" value="welcome to Leonida"></label>
+      <label>Tagline <input id="tagline" type="text" maxlength="48" value="TWO OUTLAWS. ONE SUNSET."></label>
+      <label>Heat ★ <select id="stars"><option>★★★★★</option><option>★★★★</option><option>★★★</option><option>★★</option><option>★</option></select></label>
+    </section>
+    <section class="group">
+      <h2>6 · Export PNG</h2>
+      <div id="sizes" class="chips"></div>
+      <div class="row">
+        <button id="export" type="button" class="primary">Export PNG</button>
+        <button id="exportAll" type="button">Export all 4 sizes</button>
+      </div>
+      <p class="hint">Square 1080×1080 · Portrait 1080×1350 · Wide 1920×1080 · Story 1080×1920.</p>
+    </section>
+  </aside>
+</main>
+<footer class="foot">Original art and lettering (Anton &amp; Pacifico, SIL OFL). No Rockstar Games logo, artwork or fonts. Photos stay on your machine.</footer>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
