@@ -21,10 +21,14 @@ export async function runShot(shot, query, ctx) {
       const id = ids[i % ids.length];
       p.photo = id;
       p.img = library[id] ?? null;
+      // Reset framing: the boot default tunes panel 5 (oy +0.28) for the
+      // collage9 center panel — it must not leak into other layouts, where
+      // it would push the photo down inside its clipped panel rect.
+      p.zoom = 1; p.ox = 0; p.oy = 0;
     });
   } else if (query.get('photo')) {
     const id = query.get('photo');
-    state.panels.forEach((p) => { p.photo = id; p.img = library[id] ?? null; });
+    state.panels.forEach((p) => { p.photo = id; p.img = library[id] ?? null; p.zoom = 1; p.ox = 0; p.oy = 0; });
   }
   if (query.get('size')) { state.size = query.get('size'); applySize(); }
   if (shot === 'cover') document.body.classList.add('shot-cover');
